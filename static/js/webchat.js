@@ -1,4 +1,4 @@
-var chat_ws = new WebSocket("ws://" + SERVER_IP + ":8888/websocket/" + window.location.pathname.substr(1).replace('/','-'));
+var chat_ws = new WebSocket("ws://" + SERVER_IP + "/websocket/" + window.location.pathname.substr(1).replace('/','-'));
 chat_ws.onopen = function() {
 }
 

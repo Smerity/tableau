@@ -31,7 +31,7 @@ var clickY = new Array();
 var clickDrag = new Array ();
 var paint;
 
-var ws = new WebSocket("ws://" + SERVER_IP + ":8888/savecanvas/test");
+var ws = new WebSocket("ws://" + SERVER_IP + "/savecanvas/test");
 
 $(document).ready(function (){
 context = document.getElementById ('tableauCanvas').getContext("2d");
@@ -202,8 +202,8 @@ $('#sizeLarge').click(function(){
 
 $('#saveCanvas').click(function(){
 	var img = canvas.toDataURL();
-	ws.send(img); 
-	window.alert("Your Image has been Saved Sucessfully !");
+	ws.send(img);
+	window.alert("Your image has been saved sucessfully !");
 });
 
 function getQueryVariable(variable) {
