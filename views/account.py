@@ -4,6 +4,7 @@ sys.path.append("..")
 
 import db.database
 import errno
+import hashlib
 import template.template
 import mimetypes
 import os
@@ -14,13 +15,19 @@ def logout(response):
     response.clear_cookie('userid')
     response.redirect('/')
 
+def hash_password(passwd):
+    # Note: this isn't really secure but it's better than plaintext
+    # Use a proper solution such as scrypt/bcrypt/etc and read about salting
+    s = passwd.encode('utf-8')
+    return hashlib.sha256(s).hexdigest()
+
 def login(response):
     username = response.get_field("username")
     password = response.get_field("password")
     current_user = get_logged_in(response)
     user = db.database.get_user(username)
     if user:
-        if password == user.password:
+        if hash_password(password) == user.password:
             response.set_secure_cookie('userid', username)
             response.redirect('/')
         else:
@@ -46,9 +53,9 @@ def signup(response):
     bday = response.get_field("bday")
     bmonth = response.get_field("bmonth")
     byear = response.get_field("byear")
-    
-    filename, content_type, data = response.get_file("profilepic")    
-    
+
+    filename, content_type, data = response.get_file("profilepic")
+
     # check for logged in user
     current_user = get_logged_in(response)
 
@@ -95,7 +102,7 @@ def signup(response):
     if not (bday and bmonth and byear):
         is_valid = False
         errors.append("You must have birth date month and year")
-    
+
 
     if is_valid:
         # ensure the profile directory exists
@@ -117,7 +124,7 @@ def signup(response):
         else:
             extension = None
 
-        user = db.database.create_user(username, password, fname, lname, bday, bmonth, byear, email, extension)
+        user = db.database.create_user(username, hash_password(password), fname, lname, bday, bmonth, byear, email, extension)
         response.set_secure_cookie('userid', username)
         response.redirect('/user/' + username)
     else:
@@ -145,7 +152,7 @@ def edit_user(response, username):
                     photo_path = os.path.join('static', 'images', 'profile', filename)
                     with open(photo_path, 'wb') as f:
                         f.write(data)
-    
+
     if fname and email:
         user = db.database.get_user(username)
         if filename:
@@ -169,16 +176,16 @@ def change_password(response, username):
     #loads password in database for comparison
     user = db.database.get_user(username)
     password = user.password
-    
+
     #loads form data from change_password.html
     old_password = response.get_field("old_password")
     new_password = response.get_field("new_password")
     new_password1 = response.get_field("new_password1")
-    
+
     #checks validity of data
-    if old_password == password:
+    if hash_password(old_password) == password:
         if len(new_password) > 5 and username != new_password and new_password == new_password1:
-            db.database.update_user(user, password = new_password)
+            db.database.update_user(user, password=hash_password(new_password))
             response.set_secure_cookie('userid', username)
             response.redirect('/user/' + username)
     else:
