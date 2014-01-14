@@ -1,0 +1,26 @@
+
+# landing page (with explanation/signup prompt)
+/
+
+# signup
+/signup
+
+# user
+POST /user/ # create user (signup)
+GET /user/<username> # view user
+PUT /user/<username> # update user
+GET /user/<username>/gallery/ # view private gallery
+PUT /user/<username>/upload   # uploading files
+
+# images
+POST /image/ # create image
+GET /image/<id> # view image
+
+# comments
+GET /image/<id>/comment/ # list comments
+POST /image/<id>/comment/ # create comments
+DELETE /image/<id>/comment/<id> # delete comment
+
+# gallery
+GET /gallery/ # view public gallery, request can be changed for
+

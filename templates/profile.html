@@ -1,0 +1,10 @@
+{% include header.html %}
+<article>
+    <h1>{{ user.fname.capitalize() }}'s Profile</h1>
+    <p><b>First name: </b>{{ user.fname }}</p>
+    <p><b>Last name: </b>{{ user.lname }}</p>
+    <p><b>Username: </b>{{ user.username }}</p>
+    <p><b>Email: </b>{{ user.email }}</p>
+    <p><b>Birthday: </b>{{ user.bday + '/' + user.bmonth + '/' + user.byear}} </p>
+</article>
+{% include footer.html %}

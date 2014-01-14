@@ -1,0 +1,47 @@
+ {% include header.html %}
+        
+ <article>
+	<body>	
+	<div id='canvasTools'> 
+		<li>
+			Clear the canvas
+		<button id="clearCanvas" type="button">Clear</button>
+    	<button id="undoCanvas" type="button">Undo</button>
+    	</li>
+		<li>
+			Choose a colour
+		<button id="colourBlack" type="button"></button>
+		<button id="colourPurple" type="button"></button>
+		<button id="colourGreen" type="button"></button>
+		<button id="colourYellow" type="button"></button>
+    	<button id="colourRed" type="button"></button>
+		<button id="colourOrange" type="button"></button>
+		<button id="colourPink" type="button"></button>
+		<button id="colourBlue" type="button"></button>
+        <button id="colourDkBlue" type="button"></button>
+        <button id="colourDkGreen" type="button"></button>
+        <button id="colourBrown" type="button"></button>
+        <button id="colourDkPurple" type="button"></button>
+    	</li>
+    	<li>
+			Choose a size
+        <button id="sizePencil" type="button">Pencil</button>
+		<button id="sizeSmall" type="button">Small</button>
+		<button id="sizeMedium" type="button">Medium</button>
+		<button id="sizeLarge" type="button">Large</button>
+    	</li>
+    	<li>
+			Save your drawing
+		<button id="saveCanvas" type="button">Save</button>
+    	</li>
+	</div>
+	<div id='canvas'>
+		
+		<canvas width="700" height="400" id="tableauCanvas">
+		
+		</canvas> 
+	</div>
+
+</article>
+        
+{% include footer.html %}

@@ -1,0 +1,60 @@
+{% include header.html %}
+<article>
+    <style>
+        li{
+            padding:10px;
+        }
+        
+        li:nth-child(odd)
+        {
+                background:#F0F0F0;
+        }
+        
+        li:nth-child(even)
+        {
+                background:#E0E0E0;
+        }
+    </style>
+
+    <h1>{{ image.title.split(".")[0] }}</h1>&nbsp&nbspby <a href="/user/{{ image.username }}">{{ image.username }}</a>&nbsp&nbsp&nbsp&nbsp{% if image.username == current_user.username %}<a href="{{ image.id }}/delete">delete</a>{% end if %}
+
+    <a href="/canvas?background={{ image.filename }}">edit</a>
+    
+    <div style="">
+        <img src="/static/images/{{ image.filename }}" alt="{{ image.title }}" style="width:1000px; margin-left:12px; margin-top:0px; margin-bottom: 20px; border-style:solid; border-width:1px;">
+
+    </div>
+    
+    <div class="comment-view">
+    {% if comment_list %}
+        <h3>Comments</h3>
+        <ul style="list-style-type:none; margin-left:0px; padding-left:0px;">
+            {% for comment in comment_list %}
+            <li>
+                <img src="/static/images/profile/{{ get_user(comment.username).filename }}" style="max-width:70px; vertical-align: top">
+                <a href="/user/{{ comment.username }}"><span style="margin-left: 10px;font-size: 16px;"><b>{{comment.username}}</a></b>  -  {{comment.text}}</span>
+            </li>
+            {% end for %}
+        </ul>
+    {% end if %}
+    
+        
+    </div>
+    
+    
+    {% if comment_list %}
+        <h3>Add a comment here</h3>
+    {% else %}
+        <h3>It's quiet here... add a comment below</h3>
+    {% end if %}
+    
+    <div class="comment-add" style="margin-bottom: 20px; background:#F0F0F0; padding: 10px;">
+        <form action="{{ image.id }}/comment" method="post">
+            <fieldset>                
+                    <p><label>Comment:</label> <textarea rows="5" cols="150" name="comment"/></textarea></p>
+                <input type="submit" name="Submit">
+            <fieldset>
+        </form>
+    </div>
+</article>
+{% include footer.html %}

@@ -1,0 +1,2 @@
+print (template.render('web.html', {'name' : 'smerity', 'friends' : 4, 'person' : 'tavis'}))
+print (template.render('web.html', {'nameslist' : ['ben', 'tavis', 'liam'] } ))

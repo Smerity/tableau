@@ -1,0 +1,35 @@
+<html>
+{% include header.html %}
+
+
+    <article>
+        
+        <div id='canvasTools'>
+            <li>
+                Clear the canvas
+            <button id="chooseColour" type="button">Clear</button>
+            </li>
+            <li>
+                Choose a colour
+            <button id="colourPurple" type="button">Purple</button>
+            <button id="colourGreen" type="button">Green</button>
+            <button id="colourYellow" type="button">Yellow</button>
+            </li>
+            <li>
+                Choose a size
+            <button id="chooseColour" type="button">Small</button>
+            <button id="chooseColour" type="button">Medium</button>
+            <button id="chooseColour" type="button">Large</button>
+            </li>
+
+        </div>
+        <div id='canvas'>
+            <canvas width="700" height="400" id="tableauCanvas">
+            
+            </canvas> 
+        </div>
+    </article>
+
+{% include footer.html %}
+</html>
+

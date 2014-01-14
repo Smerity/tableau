@@ -1,0 +1,16 @@
+{% include another.html %}
+<section id='profile'>
+  <h1>{{name}}</h1>
+  {% if friends > 3 %}
+    <p>Friends: {{ friends }}
+    {% if friends < 10 %}
+    <p>You could have more friends...</p>
+    {% include base_test.html %}
+    {% end if %}
+    {% end if %}
+   {% if friends > 9000 %}
+   <p>You have a lot of friends.</p>
+   {% end if %}
+    HTML IS HERE
+ </p>
+</section>

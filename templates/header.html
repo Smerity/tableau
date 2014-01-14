@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/core.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script>
+    SERVER_IP = 'localhost';
+    </script>
+    </head>
+    <body style="overflow-x: hidden;">
+        <div class="bar">
+            <header class="clearfix" id="mainpage">
+                <a href="/"><h1>Tableau</h1></a>
+                <form class="login" action="/login" method="post">
+                    {% if not current_user %}
+                        <fieldset>
+                            <legend>
+                                Login:
+                            </legend>
+                            <label>Username:</label>
+                            <input type="text" name="username">
+                            <label>Password:</label>
+                            <input type="password" name="password">
+                            <input type="submit" value="Login">
+                        </fieldset>
+                        <a href="/signup">New User</a>
+                        <!--<a href="/forgot">Forgotten Password?</a>-->
+                    {% end if %}
+                    
+                    {% if current_user %}
+                        <span style="height:50px;width:50px;overflow:hidden;"><a href="/user"><img src="/static/images/profile/{{ current_user.filename }}" alt="{{ current_user.username }}" style="max-width: 50px; border-style:solid; border-width:1px;"></a></span>
+                        <a href="/user"><h2>{{current_user.username}}</h2></a>
+                        <a class="logout" href="/logout">Logout</a>
+                    {%end if%}
+                </form>
+                <nav>
+                    
+                    {% if current_user %}
+                        <a href="/canvas">Canvas</a>
+                        <a href="/gallery">Gallery</a>
+                        <a href="/user">Profile</a>
+                        <a href="/image">Upload</a>
+                    {% end if %}
+                    <a href="/about">About</a>
+                    <a href="/help">Help</a>
+                </nav>
+            </header>
+        </div>
+        
+        {% if current_user and show_chat %}
+        <div class="chat">
+            <div class="tab">
+            
+            </div>
+            <div class="inner"> 
+            </div>
+            <div>
+                <textarea placeholder="Enter text..."></textarea>
+                <button>Send</button>
+            </div>
+        </div>
+        {% end if %}
+        <center>
+            <div class="error_bar">
+            {% for error in errors %}
+                <p style="color:red;">{{ error }}</p>
+            {% end for %}
+            </div>
+        </center>

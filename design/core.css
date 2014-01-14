@@ -1,0 +1,166 @@
+/* basics */
+body, html {
+	margin: 0px;
+	padding: 0px;
+	background-color:  white;
+}
+
+body {
+	width: 1000px;
+	margin: 0px auto;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+p {
+	margin-bottom: 14px;
+}
+
+a {
+	color: inherit;
+}
+
+/* headings */
+h1 {
+	font-size: 32px;
+	font-weight: bold;
+	margin-bottom: 32px;
+	line-height: 29px;
+}
+
+h2 {
+	font-size: 19px;
+	font-weight: bold;
+	margin-bottom: 19px;
+	line-height: 21px;
+	border-top: 4px solid black;
+	padding-top: 6px;
+	margin-top: 25px;
+}
+
+h3 {
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 19px;
+	margin-bottom: 17px;
+	margin-top: 25px;
+}
+
+
+/* definition list */
+dl {
+	width: 400px;
+	margin-bottom: 20px;
+}
+
+	dt {
+		font-weight: bold;
+		display: inline-block;
+		width: 80px;
+	}
+	
+	dd {
+		display: inline-block;
+		width: 300px;
+	}
+
+
+/* lists */
+ol, ul {
+	padding-left: 16px;
+	margin-bottom: 20px;
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+ul {
+	list-style-type: disc;
+}
+
+
+/* form */
+.login fieldset {
+	/*border: 1px solid black;*/
+	padding: 20px;
+}
+
+.login legend {
+	font-weight: bold;
+}
+
+.login form label, form input {
+	display: inline-block;
+}
+
+.login form label {
+	width: 70px;
+}
+
+.login form input[type=text] {
+	width: 300px;
+	border: 1px solid #ddd;
+	height: 20px;
+}
+
+.login form input[type=submit] {
+	float:  right;
+	margin-top: 10px;
+}
+
+/* form on signup page */
+.signup fieldset {
+    width: 500px;
+}
+
+.signup  legend {
+    font-size: 20px;
+}
+
+.signup label {
+    text-align: right;
+    width: 100px;
+    float: left;
+    font-weight: bold;
+}
+
+.signup input {
+    width: 300px;
+    float: left;
+}
+
+.signup fieldset p {
+    clear: both;
+    padding: 5px;
+}
+
+/* styling */
+header {
+	background-color: #272727;
+	color: white;
+	height: 80px;
+	margin-bottom: 30px;
+	line-height: 80px;
+	position: relative;
+}
+	header h1 {
+		line-height: 80px;
+		margin-left: 20px;
+		font-size: 24px;
+	}
+
+	header nav {
+		position: absolute;
+		bottom: 20px;
+		right: 0px;
+		height: 14px;
+		line-height: 14px;
+	}
+	
+		header nav a {
+			margin-right: 20px;
+		}
+
+        

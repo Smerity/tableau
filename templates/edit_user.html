@@ -1,0 +1,38 @@
+ {% include header.html %}
+ 
+    <div>
+    <form method="POST" class="signup" enctype="multipart/form-data">
+        <fieldset>
+            <legend><h2>Edit Profile:</h2></legend>
+            <p><label>*First Name:</label> <input type="text" name="fname" value = "{{current_user.fname}}"> </p>
+            <p><label>Last Name:</label> <input type="text" name="lname" value = "{{current_user.lname}}"></p>
+            <p><label>*Email:</label> <input type="text" name="email" value = "{{current_user.email}}"></p>
+            <p>
+                <label>Birthday: </label>
+                <select name="bday">
+                <option value=Null {% if current_user.bday == 'Null' %}selected="selected"{% end if %}>--</option>
+                {% for i in range(1, 32) %}
+                    <option value="{{ i }}" {% if i == current_user.bday %}selected="selected"{% end if %}>{{ i }}</option>
+                {%end for%}
+                </select>
+                <select name="bmonth">
+                <option value=Null {% if current_user.bmonth == 'Null' %}selected="selected"{% end if %}>--</option>
+                    {% for i in range(1, 13) %}
+                        <option value="{{ i }}" {% if i == current_user.bmonth %}selected="selected"{% end if %}>{{ i }}</option>
+                    {%end for%}
+                </select>
+                <select name="byear">
+                <option value=Null {% if current_user.byear == 'Null' %}selected="selected"{% end if %}>----</option>
+                    {% for i in range(1950, 2015) %}
+                        <option value="{{ i }}" {% if i == current_user.byear %}selected="selected"{% end if %}>{{ i }}</option>
+                    {% end for %}
+                </select>
+            </p>
+            <p><label>Profile Picture:</label> <input type="file" name="profilepic"></p>
+            <input type="submit" name="Submit">
+            <input type="reset" name="Reset">
+        <fieldset>
+    </form>
+    </div>
+  
+{% include footer.html %} 

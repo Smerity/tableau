@@ -1,0 +1,12 @@
+{% include header.html %}
+<article id="gallery">
+    <h1>Gallery</h1>
+        <div id="gallery">
+            <p>
+            {% for image in images %}
+            <a href="/gallery/{{ image }}"><img style='border:1px solid #E6E6FA' width="20%" height="20%" src="/static/images/{{ images[image] }}"></a>
+            {% end for %}
+            </p>
+        </div>
+</article>
+{% include footer.html %}

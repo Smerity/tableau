@@ -1,0 +1,36 @@
+{% include header.html %}
+<article>
+    <img src="../static/images/profile/{{ user.filename }}" alt="{{ user.username }}" style="max-width: 300px; float:right; border-style:solid; border-width:1px;">
+    <h1>{{ user.fname.capitalize() }}'s Profile</h1>
+   
+        
+     {% if current_user.username == viewed_username %}
+            &nbsp&nbsp&nbsp&nbsp<span><h1><a href="{{ user.username }}/edit">Edit</a></span><span><a href="{{ user.username }}/change_password">Change Password</a></h1></span>
+    {% end if %}    
+    
+    <p><b>First name: </b>{{ user.fname }}</p>
+    <p><b>Last name: </b>{{ user.lname }}</p>
+    <p><b>Username: </b>{{ user.username }}</p>
+    <p><b>Email: </b>{{ user.email }}</p>
+    <p><b>Birthday: </b>
+    {% if str(user.bday) != 'Null' %}
+    {{ str(user.bday) }}
+    {% else %}
+    --
+    {% end if %}
+    /
+    {% if str(user.bmonth) != 'Null' %}
+    {{ str(user.bmonth) }}
+    {% else %}
+    --
+    {% end if %}
+    /
+    {% if str(user.byear) != 'Null' %}
+    {{ str(user.byear) }}
+    {% else %}
+    ----
+    {% end if %}
+
+     </p>
+</article>
+{% include footer.html %}
